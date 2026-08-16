@@ -3,4 +3,6 @@
     color: white;
     padding: 1rem;
     font-family: var(--fonte-titulo);
+    grid-row: span(1);
+    grid-column: 1 / 3;
 }
