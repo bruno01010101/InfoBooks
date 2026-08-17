@@ -1,18 +1,20 @@
 .card{
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 15px;
     padding: 10px 10px;
-    border: 1px solid rgb(138, 133, 133);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.125);
+    border: 1px solid rgba(138, 133, 133, 0.671);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border-radius: 5px;
-    width: 300px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .top{
     display: flex;
     justify-content: space-between;
-    font-family: var(--fonte-secundaria);
+    font-family: var(--fonte-titulo);
+    
 }
 
 .middle{
@@ -24,18 +26,41 @@
     padding: 5px;
     padding: 5px;
     border-radius: 5px;
-    font-weight: bold;
     background-color: var(--green);
+    font-weight: bold;
     flex: 1;
 }
 
 .middle > div > p{
     font-size: 12px;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .icon{
     display: block;
     margin: auto;
     margin-bottom: 7px;
+}
+
+.autor{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    gap: 10px;
+}
+
+.person{
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+    color: white;
+    background-color: var(--blue);
+    border-radius: 50%;
+}
+
+.descricao{
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 300;
 }

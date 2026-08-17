@@ -1,38 +1,45 @@
 import styles from "./card.module.css"
-import { MdOutlineStarOutline } from "react-icons/md";
+import { MdOutlineStarOutline, MdLabel } from "react-icons/md";
 import { IoIosStar } from "react-icons/io";
 import { FaTrashCan } from "react-icons/fa6";
-import { FaCalendarAlt } from "react-icons/fa";
-import { FaBook } from "react-icons/fa";
-import { MdLabel } from "react-icons/md";
+import { FaBook, FaUser, FaCalendarAlt } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
-export default function Card({icone}){
+export default function Card({icone, anoLancamento, paginas, categoria, autor, descricao, titulo}) {
 
     const ic = icone == 'estrela' ? <IoIosStar />: <FaTrashCan />;
+    const navigate = useNavigate();
 
     return(
-        <div className={styles.card}>
+        <div className={styles.card} onClick={() => navigate('/book')}>
             <div className={styles.top}>
-                <p>Titulo do livro</p>
+                <p>{titulo}</p>
                 {ic}
             </div>
             <div className={styles.middle}>
-                <div className={styles.anoLancamento}>
+                <div>
                     <FaCalendarAlt className={styles.icon}/>
                     <p>Lançamento:</p>
-                    <p>2012</p>
+                    <p>{anoLancamento}</p>
                 </div>
-                <div className={styles.totalPag}>
+                <div>
                     <FaBook className={styles.icon} />
                     <p>Páginas:</p>
-                    <p>375</p>
+                    <p>{paginas}</p>
                 </div>
-                <div className={styles.categoria}>
+                <div>
                     <MdLabel className={styles.icon} />
                     <p>Categoria:</p>
-                    <p>Brain</p>
+                    <p>{categoria}</p>
                 </div>
             </div>
+            <div className={styles.autor}>
+                <FaUser className={styles.person} />
+                <p>Autor: {autor}</p>
+            </div>
+            <p className={styles.descricao}>
+                {descricao}
+            </p>
         </div>
     )
 }

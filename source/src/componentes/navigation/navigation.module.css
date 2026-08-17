@@ -1,4 +1,4 @@
-.navigation{
+.navigation {
     background-color: var(--color1);
     color: white;
     padding: 1rem;
@@ -9,15 +9,31 @@
     gap: 30px;
 }
 
-.navigation > * {
+.navigation>* {
     width: 35px;
     height: 35px;
     opacity: 70%;
     padding: 10px;
 }
 
-.navigation > *:hover{
+.navigation>*:hover {
     background-color: var(--green);
     border-radius: 3px;
     color: black;
+}
+
+@media screen and (min-width: 268px) and (max-width: 960px) {
+    .navigation {
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .navigation>* {
+        width: 43px;
+        height: 43px;
+        opacity: 70%;
+        padding: 12px;
+    }
 }
