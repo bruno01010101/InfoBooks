@@ -1,7 +1,7 @@
 import styles from "./search.module.css"
 
-export default function Search({placeholder}){
+export default function Search({type, ...props}) {
     return(
-        <input type="text" className={styles.input} placeholder={placeholder}/>
+        <input type={type || "text"} className={styles.input} {...props}/>
     )
 }

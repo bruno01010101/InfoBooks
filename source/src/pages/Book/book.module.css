@@ -7,7 +7,6 @@
   border-radius: 16px;
   box-shadow: 0 1px 3px rgba(32, 32, 32, 0.06), 0 8px 24px rgba(32, 32, 32, 0.04);
   color: var(--color1, #202020);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 .book h1 {
@@ -51,8 +50,8 @@
 }
 
 .image {
-  width: 64px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   object-fit: contain;
   border-radius: 6px;
 }
@@ -79,7 +78,7 @@
   font-size: 12.5px;
   font-weight: 600;
   padding: 5px 12px;
-  border-radius: 999px;
+  border-radius: 50px;
   background: rgba(20, 110, 179, 0.08);
   color: var(--blue, #146eb3);
 }
@@ -98,7 +97,6 @@
   font-size: 22px;
   font-weight: 700;
   color: var(--color1, #202020);
-  margin: 0;
 }
 
 .buyLink {
@@ -111,7 +109,7 @@
   font-size: 14px;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: 999px;
+  border-radius: 50px;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 

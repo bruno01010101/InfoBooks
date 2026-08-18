@@ -1,0 +1,56 @@
+.cadastro {
+    max-width: 640px;
+    margin: 30px auto;
+    padding: 50px 28px 50px 28px;
+    background: #fcfbfb;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(32, 32, 32, 0.06), 0 8px 24px rgba(32, 32, 32, 0.04);
+    color: var(--color1, #202020);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    position: relative;
+    top: 10%;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  background: var(--green);
+  border: none;
+  color: var(--color1, #202020);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+.btnBlue{
+    background: rgba(20, 110, 179, 0.08);
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.btn:hover {transform: translateY(-1px);}
+
+.btns {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.div{
+    background-image: url('/linha-verde.jpg');
+    height: 92vh;
+}

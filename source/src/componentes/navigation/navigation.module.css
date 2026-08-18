@@ -14,6 +14,7 @@
     height: 35px;
     opacity: 70%;
     padding: 10px;
+    color: white;
 }
 
 .navigation>*:hover {

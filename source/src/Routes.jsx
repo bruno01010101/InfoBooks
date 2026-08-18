@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes as RouterRoutes, Route } from 'react-router'
 import Feed from './pages/Feed'
-import Cadastro from './pages/Cadastro'
+import AuthForm from './pages/AuthForm'
 import Book from './pages/Book'
 import Main from './componentes/main'
 
@@ -12,6 +12,10 @@ function Routes() {
         <Route path="/" element={<Feed />} >
           <Route path="" element={< Main/>} />
           <Route path="/book" element={<Book />} />
+        </Route>
+        <Route path="/auth">
+          <Route path="login" element={< AuthForm type='Login'/>} />
+          <Route path="cadastro" element={<AuthForm type='Cadastro' />} />
         </Route>
       </RouterRoutes>
     </BrowserRouter>
