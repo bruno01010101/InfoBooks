@@ -3,15 +3,13 @@ import { MdOutlineStarOutline, MdLabel } from "react-icons/md";
 import { IoIosStar } from "react-icons/io";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaBook, FaUser, FaCalendarAlt } from "react-icons/fa";
-import { useNavigate } from "react-router";
 
-export default function Card({icone, anoLancamento, paginas, categoria, autor, descricao, titulo}) {
+export default function Card({icone, anoLancamento, paginas, categoria, autor, descricao, titulo, textLimit = 200, onClick} ) {
 
     const ic = icone == 'estrela' ? <IoIosStar />: <FaTrashCan />;
-    const navigate = useNavigate();
 
     return(
-        <div className={styles.card} onClick={() => navigate('/book')}>
+        <div className={styles.card} onClick={onClick}>
             <div className={styles.top}>
                 <p>{titulo}</p>
                 {ic}
@@ -38,7 +36,7 @@ export default function Card({icone, anoLancamento, paginas, categoria, autor, d
                 <p>Autor: {autor}</p>
             </div>
             <p className={styles.descricao}>
-                {descricao}
+                {typeof(descricao) === 'string' ? descricao.slice(0, textLimit) + '...' : descricao}
             </p>
         </div>
     )

@@ -10,7 +10,9 @@ export default function Navigation() {
         <section className={styles.navigation}>
             <Link to="/"><MdFeed /> </Link>    
             <IoStar />
-            <FaUser />
+            <Link to="/auth/login">
+                <FaUser />
+            </Link>
             <ImExit />
 
         </section>

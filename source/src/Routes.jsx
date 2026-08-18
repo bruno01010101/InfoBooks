@@ -11,7 +11,7 @@ function Routes() {
       <RouterRoutes>
         <Route path="/" element={<Feed />} >
           <Route path="" element={< Main/>} />
-          <Route path="/book" element={<Book />} />
+          <Route path="/book/:id" element={<Book />} />
         </Route>
         <Route path="/auth">
           <Route path="login" element={< AuthForm type='Login'/>} />

@@ -26,7 +26,6 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  width: 100%;
   background: var(--green);
   border: none;
   color: var(--color1, #202020);
@@ -46,6 +45,7 @@
 
 .btns {
     display: flex;
+    justify-content: center;
     gap: 10px;
     width: 100%;
 }
@@ -53,4 +53,15 @@
 .div{
     background-image: url('/linha-verde.jpg');
     height: 92vh;
+}
+
+@media (max-width: 768px) {
+    .cadastro {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    btns{
+        flex-direction: column;
+    }
 }
