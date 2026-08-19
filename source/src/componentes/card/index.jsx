@@ -1,18 +1,23 @@
 import styles from "./card.module.css"
 import { MdOutlineStarOutline, MdLabel } from "react-icons/md";
-import { IoIosStar } from "react-icons/io";
+import { IoIosStar, IoIosStarOutline } from "react-icons/io";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaBook, FaUser, FaCalendarAlt } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Card({icone, anoLancamento, paginas, categoria, autor, descricao, titulo, textLimit = 200, onClick} ) {
 
-    const ic = icone == 'estrela' ? <IoIosStar />: <FaTrashCan />;
+    const [ic, setIc] = useState(icone == 'estrela' ? <IoIosStarOutline />: <FaTrashCan />);
+    function changeStar(e){
+        e.stopPropagation()
+        setIc(<IoIosStar />)
+    }
 
     return(
         <div className={styles.card} onClick={onClick}>
-            <div className={styles.top}>
+            <div className={styles.top} >
                 <p>{titulo}</p>
-                {ic}
+                <span onClick={changeStar} className={styles.span}>{ic}</span>
             </div>
             <div className={styles.middle}>
                 <div>

@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     font-family: var(--fonte-titulo);
-    
+    gap: 5px;
 }
 
 .middle{
