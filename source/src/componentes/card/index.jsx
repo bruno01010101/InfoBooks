@@ -5,7 +5,7 @@ import { FaTrashCan } from "react-icons/fa6";
 import { FaBook, FaUser, FaCalendarAlt } from "react-icons/fa";
 import { useState } from "react";
 
-export default function Card({icone, anoLancamento, paginas, categoria, autor, descricao, titulo, textLimit = 200, onClick} ) {
+export default function Card({icone, anoLancamento, paginas, categoria, autor, descricao, titulo, textLimit = 200, onClick, starClick} ) {
 
     const [ic, setIc] = useState(icone == 'estrela' ? <IoIosStarOutline />: <FaTrashCan />);
     function changeStar(e){
@@ -17,7 +17,10 @@ export default function Card({icone, anoLancamento, paginas, categoria, autor, d
         <div className={styles.card} onClick={onClick}>
             <div className={styles.top} >
                 <p>{titulo}</p>
-                <span onClick={changeStar} className={styles.span}>{ic}</span>
+                <span onClick={(e) => {
+                    changeStar(e)
+                    starClick()
+                }} className={styles.span}>{ic}</span>
             </div>
             <div className={styles.middle}>
                 <div>

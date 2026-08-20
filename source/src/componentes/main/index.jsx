@@ -24,6 +24,20 @@ export default function Main() {
         }
     }
 
+    function starClick(id){
+        
+        let listaFavoritos = []
+        if(localStorage.getItem('id')) {
+            listaFavoritos = JSON.stringify(localStorage.getItem(id))
+            listaFavoritos.push(id)
+            console.log([...listaFavoritos])
+            localStorage.setItem('id', JSON.parse(listaFavoritos))
+        }else{
+            listaFavoritos = [id]
+            localStorage.setItem('id', JSON.parse(listaFavoritos))
+        }
+    }
+
     useEffect(() => {
         async function axioBooks() {
             await requisicao();
@@ -53,7 +67,9 @@ export default function Main() {
                             return (
                                 <Card icone='estrela' anoLancamento={data.getFullYear()} paginas={book.volumeInfo.pageCount} autor={book.volumeInfo.authors?.[0]}
                                     titulo={book.volumeInfo.title} descricao={book.volumeInfo.description} categoria={categoria} key={index}
-                                    onClick={() => navigate(`/book/${book.id}`)}
+                                    starClick={() => starClick(book.id)}
+                                    onClick={() => navigate(`/book/${book.id}`)
+                                    }
                                 />
                             );
                         })

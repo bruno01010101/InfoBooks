@@ -3,6 +3,7 @@ import Feed from './pages/Feed'
 import AuthForm from './pages/AuthForm'
 import Book from './pages/Book'
 import Main from './componentes/main'
+import Favorites from './pages/Favorites'
 
 function Routes() {
 
@@ -12,6 +13,7 @@ function Routes() {
         <Route path="/" element={<Feed />} >
           <Route path="" element={< Main/>} />
           <Route path="/book/:id" element={<Book />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Route>
         <Route path="/auth">
           <Route path="login" element={< AuthForm type='Login'/>} />
