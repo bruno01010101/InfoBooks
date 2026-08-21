@@ -6,16 +6,19 @@ import axios from 'axios'
 import { useNavigate } from 'react-router';
 import LoadingSpinner from '../../LoadingSpinner'
 
-export default function Main() {
+export default function Main({isFavorite = false}) {
+    const parsing = localStorage.getItem('id') ? JSON.parse(localStorage.getItem('id')) : []
+
+    const [lista, setLista] = useState(parsing)
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [valor, setValor] = useState('')
+    const apiKey = import.meta.env.VITE_GOOGLE_KEY;
+
     const navigate = useNavigate();
 
-    async function requisicao(term = 'harry potter') {
+    async function requisicao(url = `https://www.googleapis.com/books/v1/volumes?q=harry potter&key=${apiKey}&maxResults=12`) {
         try {
-            const apiKey = import.meta.env.VITE_GOOGLE_KEY;
-            const url = `https://www.googleapis.com/books/v1/volumes?q=${term}&key=${apiKey}&maxResults=12`
             const response = await axios.get(url);
             setBooks(response.data.items);
             setLoading(false);
@@ -24,32 +27,53 @@ export default function Main() {
         }
     }
 
-    function starClick(id){
-        
+    function starClick(id) {
         let listaFavoritos = []
-        if(localStorage.getItem('id')) {
-            listaFavoritos = JSON.stringify(localStorage.getItem(id))
+        if (localStorage.getItem('id')) {
+            listaFavoritos = JSON.parse(localStorage.getItem('id'))
+            if (listaFavoritos.indexOf(id) == -1) {
+                listaFavoritos.push(id)
+                localStorage.setItem('id', JSON.stringify(listaFavoritos))
+            }
+            else {
+                return
+            }
+        } else {
             listaFavoritos.push(id)
-            console.log([...listaFavoritos])
-            localStorage.setItem('id', JSON.parse(listaFavoritos))
-        }else{
-            listaFavoritos = [id]
-            localStorage.setItem('id', JSON.parse(listaFavoritos))
+            localStorage.setItem('id', JSON.stringify(listaFavoritos))
         }
     }
 
+    {/* Retirar isFavorite do useEffect, tirar o setloading(false) de requisição */}
     useEffect(() => {
-        async function axioBooks() {
-            await requisicao();
+        if (!isFavorite) {
+            async function axioBooks() {
+                await requisicao();
+            }
+
+            axioBooks();
+        }
+        
+        else {
+            lista.forEach(async (id) => {
+                try {
+                    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${apiKey}`);
+                    setBooks((prev) => [...prev, response.data]);
+                    setLoading(false)
+                    
+                } catch (error) {
+                    console.error('Erro ao buscar livro:', error);
+                }
+            })
         }
 
-        axioBooks();
     }, []);
 
     const Enter = (e) => {
 
         if (e.key === 'Enter') {
-            requisicao(valor);
+
+            requisicao(`https://www.googleapis.com/books/v1/volumes?q=${valor}&key=${apiKey}&maxResults=12`);
             setLoading(true)
         }
     }
