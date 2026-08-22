@@ -1,0 +1,103 @@
+.notfound {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0b0e1a;
+  color: #f2f0e9;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-align: center;
+  padding: 24px;
+}
+
+.notfound__glitch {
+  position: relative;
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  font-size: clamp(5rem, 18vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.notfound__glitch::before,
+.notfound__glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.notfound__glitch::before {
+  color: var(--green);
+  clip-path: inset(0 0 55% 0);
+  animation: glitch-top 3.5s infinite linear alternate-reverse;
+}
+
+.notfound__glitch::after {
+  color: #ff6b9d;
+  clip-path: inset(45% 0 0 0);
+  animation: glitch-bottom 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-top {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, -1px); }
+  40% { transform: translate(2px, 1px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch-bottom {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(2px, 1px); }
+  40% { transform: translate(-2px, -1px); }
+  60% { transform: translate(1px, -1px); }
+  80% { transform: translate(-1px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.notfound__title {
+  margin-top: 24px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.notfound__text {
+  margin-top: 8px;
+  max-width: 420px;
+  color: #9a97a8;
+  font-size: 0.95rem;
+}
+
+.notfound__button {
+  margin-top: 32px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #0b0e1a;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.notfound__button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.notfound__button:focus-visible {
+  outline: 2px solid #f2f0e9;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notfound__glitch::before,
+  .notfound__glitch::after {
+    animation: none;
+  }
+}

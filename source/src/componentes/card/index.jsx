@@ -10,7 +10,9 @@ export default function Card({icone, anoLancamento, paginas, categoria, autor, d
     const [ic, setIc] = useState(icone == 'estrela' ? <IoIosStarOutline />: <FaTrashCan />);
     function changeStar(e){
         e.stopPropagation()
-        setIc(<IoIosStar />)
+        if (icone === 'estrela'){
+            setIc(<IoIosStar />)
+        }
     }
 
     return(
