@@ -9,6 +9,10 @@ export default function Book() {
     const { id } = useParams();
     const [livro, setLivro] = useState(null);
     const [loading, setLoading] = useState(true);
+    const dinheiro = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    })
 
     useEffect(() => {
         async function axiosBooks() {
@@ -17,6 +21,7 @@ export default function Book() {
                 const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${apiKey}`);
                 setLivro(response.data);
                 setLoading(false)
+
             } catch (error) {
                 console.error('Erro ao buscar livro:', error);
             }
@@ -41,7 +46,6 @@ export default function Book() {
 
                 <div className={styles.description}>
                     <p dangerouslySetInnerHTML={{ __html: livro?.volumeInfo.description }}></p>
-                    {/*{text.replace(/<[^>]+>/g, '')} */}
                 </div>
 
                 <div className={styles.meta}>
@@ -50,17 +54,17 @@ export default function Book() {
                 </div>
 
                 <div className={styles.footer}>
-                    <p className={styles.price}>preço: {livro?.volumeInfo.maturityRating}</p>
+                    <p className={styles.price}>preço: {dinheiro.format(livro?.saleInfo?.listPrice?.amount ?? 0.00) }</p>
                     <a href={livro?.volumeInfo.previewLink} className={styles.buyLink} target="_blank" rel="noopener noreferrer">
                         Acessar
                     </a>
                 </div>
             </div>
         )
-    }else{
-        return(
+    } else {
+        return (
             <div className={styles.book}>
-                <LoadingSpinner size={140} colorStart='#146eb3' colorEnd='#B8FF00'/>
+                <LoadingSpinner size={140} colorStart='#146eb3' colorEnd='#B8FF00' />
             </div>
         )
     }

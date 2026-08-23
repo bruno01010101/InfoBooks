@@ -42,6 +42,10 @@ export default function Favorites() {
         localStorage.setItem('id', JSON.stringify(lista))
     }
 
+    const formatText = (text) => {
+        const textoNovo =  text?.replace(/<[^>]+>/g, '') ?? '';
+        return textoNovo
+    }
 
     if (loading === false) {
         return (
@@ -54,7 +58,7 @@ export default function Favorites() {
                             const data = new Date(book.volumeInfo.publishedDate);
                             return (
                                 <Card anoLancamento={data.getFullYear()} paginas={book.volumeInfo.pageCount} autor={book.volumeInfo.authors?.[0]}
-                                    titulo={book.volumeInfo.title} descricao={book.volumeInfo.description} categoria={categoria} key={index}
+                                    titulo={book.volumeInfo.title} descricao={formatText(book.volumeInfo.description)} categoria={categoria} key={index}
                                     starClick={() => excluirLivro(book.id)}
                                     onClick={() => navigate(`/book/${book.id}`)
                                     }
