@@ -16,4 +16,4 @@ vale lembrar que a autenticação não é segura é utiliza o localStorage, apen
 
 # Link
 
-Para usar o projeto basta acessar: 
+Para usar o projeto basta acessar: https://info-books.vercel.app
